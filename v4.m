@@ -25,7 +25,7 @@ while(toc(tOuter)<=30 && parrotObj.BatteryLevel>10)
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         %   mache foto & Speichere zur Weiterverarbeitung
         rohpicture = snapshot(camObj);     % Capture image from drone's FPV camera
-        figure, imshow(picture);        % Zeige Bild von Drohne (für uns, Kontrolle)
+        figure, imshow(rohpicture);        % Zeige Bild von Drohne (für uns, Kontrolle)
         % dynamische Speicherung der Bilder von FPV Cam
         l1 = sprintf('%06d',i);
         % Dieser Pfad muss immer angepasst werden! Der Code erstellt keine neuen Ordner
