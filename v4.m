@@ -20,15 +20,15 @@ while(toc(tOuter)<=30 && parrotObj.BatteryLevel>10)
     
     ausrichten=true;
     
-    while ausrichten==true  % ausrichten codeschnipsel
-        SP_x=1000; % anfangsbedingung X_wert
+    while ausrichten==true          % ausrichten codeschnipsel
+        SP_x=1000;                  % anfangsbedingung X_wert
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         %   mache foto & Speichere zur Weiterverarbeitung
         rohpicture = snapshot(camObj);     % Capture image from drone's FPV camera
-        %figure, imshow(picture);        % Zeige Bild von Drohne (für uns, Kontrolle)
+        figure, imshow(picture);        % Zeige Bild von Drohne (für uns, Kontrolle)
         % dynamische Speicherung der Bilder von FPV Cam
         l1 = sprintf('%06d',i);
-        % Dieser Pfad muss immer angepasst werden! Der code erstellt keine neuen Ordner
+        % Dieser Pfad muss immer angepasst werden! Der Code erstellt keine neuen Ordner
         picture = imresize(rohpicture, [360, 640]); % anpassen bild auf verarbeitungsgröße
         imwrite(picture, "C:\Constanze\Master SPS\U.F.O 4.1\resources\project\Fotos\picture_"+l1+"_FPV_drone.png") % speichert bild ab (nummerinerung in Dateiname inkludiert
         
@@ -36,8 +36,8 @@ while(toc(tOuter)<=30 && parrotObj.BatteryLevel>10)
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         %Bildverarbeitung (Rot) codeschnipsel
         
-        %Dieser Code generiert ein BW Bild auf Basis vom Farbgrenzwerten kalibiriert mit der App Color Thresholder
-        %auf eine orange Trinkflasche um einen Test am 08.02.2020 laufen zu lassen. Das Bild wurde mit der Drohneaufgenommen.
+        % Dieser Code generiert ein BW Bild auf Basis vom Farbgrenzwerten kalibiriert mit der App Color Thresholder
+        % auf eine orange Trinkflasche um einen Test am 08.02.2020 laufen zu lassen. Das Bild wurde mit der Drohne aufgenommen.
         % Dieser Pfad muss immer angepasst werden! Der code erstellt keine neuen Ordner
         pic_FPV_rot = imread("C:\Constanze\Master SPS\U.F.O 4.1\resources\project\Fotos\picture_"+l1+"_FPV_drone.png"); %Lese das bild in Pic_FPV_rot ein;
         imshow(pic_FPV_rot);            %Öffnen und ansehen des Bildes
@@ -66,10 +66,10 @@ while(toc(tOuter)<=30 && parrotObj.BatteryLevel>10)
         imshow(pic_FPV_rot);%nur zum Anzeigen des Bildes (im Code entfernen)
         imshow(BW);%%nur zum Anzeigen des Bildes (im Code entfernen)
         Eigenschaften = regionprops(BW, {'Area','Eccentricity', 'MajorAxisLength', 'MinorAxisLength', 'Centroid', 'BoundingBox'});
-        %Regionprops ist der zentrale Befehl aus der image Processing toolbox. Das
-        %liefert uns in unserem Fall den Centroid = Schwerpunkt mit x und y Wert, Area = Größe des
-        %Objekts in Pixel,und weitere mögliche Aspekte des Bildes - für uns sind
-        %aber die wichtigtsten Centroid und Area
+        % Regionprops ist der zentrale Befehl aus der image Processing toolbox. Das
+        % liefert uns in unserem Fall den Centroid = Schwerpunkt mit x und y Wert, Area = Größe des
+        % Objekts in Pixel,und weitere mögliche Aspekte des Bildes - für uns sind
+        % aber die wichtigtsten Centroid und Area
         Position_bottle = [0 0];
         Position_bottle = [Eigenschaften.Centroid]; %   360x640 massenschwerpunkt, größe übergeben
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
